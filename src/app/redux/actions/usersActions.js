@@ -1,4 +1,4 @@
-import getUserApi from '../../../api/getUsers';
+import getUserApi from '../../api/getUsers';
 
 const getUserAPI = () => async (dispatch) => {
   const data = await getUserApi()

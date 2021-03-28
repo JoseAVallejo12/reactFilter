@@ -1,21 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./UserCard.scss";
-import { connect } from "react-redux";
-import getUserAPI from '../app/redux/actions/usersActions';
+import React from 'react';
+import PropTypes from 'prop-types';
+import './UserCard.scss';
 
-const UserCard = (props) => {
-  console.log(props)
+const UserCard = ({ user }) => {
   return (
     <>
       <div className="card">
-        <div className="card_main_img" />
+        <div className="card_main_img">
+          <img
+            className="imagen"
+            src={user.download_url}
+            alt="main user background"
+          />
+        </div>
         <div className="card_body">
           <p>Et in excepturi veniam ex magnam atque ad ex tenetur.</p>
         </div>
         <div className="card_footer">
           <div className="card_footer_user_imagen" />
-          <h3 className="card_footer_user_name">{props.name}</h3>
+          <h3 className="card_footer_user_name">{user.author}</h3>
         </div>
       </div>
     </>
@@ -23,25 +26,19 @@ const UserCard = (props) => {
 };
 
 UserCard.defaultProps = {
-  name: "joselito",
-  username: "vallejin",
-  email: "s@s.com",
-  address: {},
-  phone: "7868",
-  website: "www.algo.com",
+  user: {
+    id: 1,
+    name: '',
+    username: '',
+    email: '',
+    address: {},
+    phone: '',
+    website: '',
+  },
 };
 
 UserCard.propTypes = {
-  name: PropTypes.string,
-  username: PropTypes.string,
-  email: PropTypes.string,
-  address: PropTypes.object,
-  phone: PropTypes.string,
-  website: PropTypes.string,
+  user: PropTypes.object,
 };
 
-const mapStateToProps = (reducers) => {
-  return reducers.usersReducer
-};
-
-export default connect(mapStateToProps, {getUserAPI})(UserCard);
+export default UserCard;

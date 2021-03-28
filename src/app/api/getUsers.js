@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 const getUsers = async () => {
-  return (await axios('https://jsonplaceholder.typicode.com/users')).data
+  return (await axios('https://picsum.photos/v2/list')).data
 }
 export default getUsers;

@@ -1,9 +1,15 @@
 import React from "react";
 import "./App.css";
-import UserCard from "./components/UserCard";
+import UserFilter from "./components/UserFilter";
+import UserGrid from "./components/userGrid";
 
 const App = () => {
-  return <UserCard />;
+  return (
+    <>
+      <UserFilter />
+      <UserGrid />
+    </>
+  );
 };
 
 export default App;
