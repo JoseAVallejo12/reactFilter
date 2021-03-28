@@ -1,0 +1,4 @@
+export const userTypes = {
+  LIST_ALL_USERS: 'LIST_ALL_USERS',
+  FILTERED_USERS: 'FILTERED_USERS'
+}

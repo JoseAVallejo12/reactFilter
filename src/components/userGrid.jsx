@@ -1,20 +1,14 @@
 import { Container, Grid, Paper } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import getUserAPI from "../app/redux/actions/usersActions";
 import UserCard from "./UserCard";
 
 const UserGrid = (props) => {
-
-  useEffect(() => {
-    props.getUserAPI();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  // console.log(props)
   return (
     <Container>
       <Grid container wrap='wrap' direction='row' spacing={5}>
-        {props.users.length
+        {!props.filter
           ? props.users.map((user) => (
               <Grid
                 key={user.id}
@@ -26,7 +20,17 @@ const UserGrid = (props) => {
                 <Paper><UserCard user={user} /></Paper>
               </Grid>
             ))
-          : ""}
+          : props.userFilter.map((user) => (
+            <Grid
+              key={user.id}
+              container
+              justify='center'
+              alignItems='center'
+              item lg={3} md={4} sm={6} xs={12}
+            >
+              <Paper><UserCard user={user} /></Paper>
+            </Grid>
+          ))}
         </Grid>
     </Container>
   );
@@ -36,4 +40,4 @@ const mapStateToProps = (reducers) => {
   return reducers.usersReducer;
 };
 
-export default connect(mapStateToProps, { getUserAPI })(UserGrid);
+export default connect(mapStateToProps, {})(UserGrid);
